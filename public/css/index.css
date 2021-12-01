@@ -178,7 +178,6 @@ main {
 #products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* 等於 grid-template-columns: 1fr 1fr 1fr; */
   gap: 50px 40px;
   max-width: 1160px;
   padding: 70px 24px;
