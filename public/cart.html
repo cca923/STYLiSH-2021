@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/ico" href="./images/favicon.png" />
+    <title>STYLiSH ｜ 購物車</title>
+    <meta
+      name="description"
+      content="STYLiSH 購物車。因為在乎所以成就不朽，質感單品，現貨限量供應，立刻手刀下訂。"
+    />
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+    <script src="https://js.tappaysdk.com/tpdirect/v5.7.0"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-MGM6TJCHGF"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MGM6TJCHGF");
+    </script>
+  </head>
+  <body>
+    <header>
+      <!-- Laptop Header -->
+      <div class="laptop-header">
+        <a class="logo" href="./">
+          <img src="./images/logo.png" alt="STYLiSH logo" height="48" />
+        </a>
+
+        <div class="nav">
+          <a href="./?tag=women" class="tag tag-women">女裝</a>
+          <a href="./?tag=men" class="tag">男裝</a>
+          <a href="./?tag=accessories" class="tag">配件</a>
+        </div>
+
+        <form action="./" method="GET">
+          <input class="search" type="search" name="tag" />
+        </form>
+
+        <a class="cart" href="./cart.html">
+          <img src="./images/cart.png" alt="購物車" height="44" />
+          <div class="count"></div>
+        </a>
+
+        <div class="member">
+          <img src="./images/member.png" alt="會員" height="44" />
+        </div>
+      </div>
+
+      <!-- Mobile Header-->
+      <div class="mobile-header">
+        <a class="logo" href="./">
+          <img src="./images/logo.png" alt="STYLiSH logo" height="22" />
+        </a>
+
+        <form action="./" method="GET">
+          <input
+            id="mobile-search"
+            class="search--inactive"
+            type="search"
+            name="tag"
+          />
+        </form>
+      </div>
+
+      <!-- Mobile Navbar-->
+      <div class="mobile-nav">
+        <a href="./?tag=women" class="tag tag-women">女裝</a>
+        <a href="./?tag=men" class="tag">男裝</a>
+        <a href="./?tag=accessories" class="tag">配件</a>
+      </div>
+
+      <!-- Mobile Footer-->
+      <div class="mobile-footer">
+        <a class="cart" href="./cart.html">
+          <img src="./images/cart-mobile.png" alt="購物車" height="44" />
+          <div class="count"></div>
+          購物車
+        </a>
+        <div class="member">
+          <img src="./images/member-mobile.png" alt="會員" height="44" />
+          會員
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="cart">
+        <div class="header">
+          <div class="title" id="title">
+            購物車
+            <span class="title__count"></span>
+          </div>
+          <div class="item__quantity">數量</div>
+          <div class="item__price">單價</div>
+          <div class="item__subtotal">小計</div>
+          <div class="item__remove"></div>
+        </div>
+
+        <div class="items" id="items"></div>
+
+        <div class="shipment">
+          <div class="shipment__name">配送國家</div>
+          <select class="shipment__select">
+            <option>台灣及離島</option>
+          </select>
+          <div class="shipment__name">付款方式</div>
+          <select class="shipment__select">
+            <option>信用卡付款</option>
+          </select>
+        </div>
+        <div class="reminder">
+          ※ 提醒您：<br />
+          ● 選擇宅配-請填寫正確收件人資訊，避免包裹配送不達<br />
+          ● 選擇超商-請填寫正確收件人姓名(與證件相符)，避免無法領取
+        </div>
+        <div class="form-header">訂購資料</div>
+        <div class="form">
+          <div class="field">
+            <label class="field__name" for="name">收件人姓名</label>
+            <div class="field__input">
+              <input id="name" type="text" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__name" for="email">Email</label>
+            <div class="field__input">
+              <input id="email" type="text" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__name" for="phone">手機號碼</label>
+            <div class="field__input">
+              <input id="phone" type="text" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__name" for="address">收件地址</label>
+            <div class="field__input">
+              <input id="address" type="text" required />
+            </div>
+          </div>
+          <div class="field">
+            <div class="field__name" for="time">配送時間</div>
+            <div class="field__input">
+              <input
+                class="time"
+                type="radio"
+                value="morning"
+                id="morning"
+                name="time"
+                checked
+              />
+              <label for="morning">08:00-12:00</label>
+              <input
+                class="time"
+                type="radio"
+                value="afternoon"
+                id="afternoon"
+                name="time"
+              />
+              <label for="afternoon">14:00-18:00</label>
+              <input
+                class="time"
+                type="radio"
+                value="anytime"
+                id="anytime"
+                name="time"
+              />
+              <label for="anytime">不指定</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-header">付款資料</div>
+        <div class="form">
+          <div class="field">
+            <label class="field__name" for="card">信用卡號碼</label>
+            <div class="field__input">
+              <div class="tpfield" id="card-number"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__name" for="expire">有效期限</label>
+            <div class="field__input">
+              <div class="tpfield" id="card-expiration-date"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__name" for="ccv">安全碼</label>
+            <div class="field__input">
+              <div class="tpfield" id="card-ccv"></div>
+            </div>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="subtotal" id="subtotal">
+            <div class="name">總金額</div>
+            <div class="value">NT.<span class="subtotal__price"></span></div>
+          </div>
+          <div class="freight">
+            <div class="name">運費</div>
+            <div class="value">NT.<span class="freight__price"></span></div>
+          </div>
+          <div class="total" id="total">
+            <div class="name">應付金額</div>
+            <div class="value">NT.<span class="total__price"></span></div>
+          </div>
+          <button id="checkout">確認付款</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="loading">
+      <img class="loading__gif" src="./images/loading.gif" />
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <nav>
+        <ul>
+          <li>關於 Stylish</li>
+          <li>服務條款</li>
+          <li>隱私政策</li>
+          <li>聯絡我們</li>
+          <li>FAQ</li>
+        </ul>
+      </nav>
+
+      <div class="links">
+        <img src="./images/line.png" alt="LINE" loading="lazy" />
+        <img src="./images/twitter.png" alt="Twitter" loading="lazy" />
+        <img src="./images/facebook.png" alt="Facebook" loading="lazy" />
+      </div>
+
+      <div class="rights">© 2021. All rights reserved.</div>
+    </footer>
+    <script type="module" src="data/data-cart.js"></script>
+  </body>
+</html>
